@@ -1,0 +1,70 @@
+getwd()
+setwd("C:/Users/admin/Desktop/R")
+data=read.csv('mvtWeek1.csv')
+str(data)
+summary(data)
+#1.3
+maxId=max(data$ID)
+maxId
+#1.4
+minBeat=min(data$Beat)
+minBeat
+#1.5
+d<-length(which(data$Arrest==TRUE))
+print(d)
+#1.6
+locDesc<-length(which(data$LocationDescription=='ALLEY'))
+print(locDesc)
+#2.1
+%B/%d/%y %H:%M
+%d/%m/%y %H:%M
+%H:%M %m/%d/%y
+%H:%M %d/%m/%y
+#2.2
+dateCOnvert=as.Date(strptime(data$Date,"%m/%d/%y %H:%M"))
+print(dateCOnvert)
+help(strptime)
+medLst<-as.list(summary(dateCOnvert))
+medChk<-medLst[[3]]
+medChar<-as.character(medChk)
+Sys.setlocale("LC_TIME", "C")
+print(medChar)
+class(medChar)
+dateConvert2=as.Date(strptime(medChar,"%m/%y"))
+print(dateConvert2)
+class(dateConvert2)
+#2.3
+data$month=months(dateCOnvert)
+data$weekday=weekdays(dateCOnvert)
+data$Date=dateCOnvert
+str(data)
+counts<-table(data$month) #it brings the count of particular cols
+#cc<-with(data,tapply(data$ID,data$month,function(x) length(x)))
+mm<-which.min(counts)
+mm
+#2.4
+counts=table(data$weekday)
+nn=which.max(counts)
+nn
+#2.5
+counts=table(data$Arrest,data$month)
+which.max(counts)
+#1.1
+data1=read.csv('BoeingStock.csv')
+data2=read.csv('CocaColaStock.csv')
+data3=read.csv('GEStock.csv')
+data4=read.csv('IBMStock.csv')
+data5=read.csv('ProcterGambleStock.csv')
+remove(data6)
+str(data1)
+data1$Date=as.Date(data1$Date,"%m/%d/%y")
+data2$Date=as.Date(data2$Date,"%m/%d/%y")
+data3$Date=as.Date(data3$Date,"%m/%d/%y")
+data4$Date=as.Date(data4$Date,"%m/%d/%y")
+data5$Date=as.Date(data5$Date,"%m/%d/%y")
+nrow(data1)
+NROW(data1)
+NROW(data2)
+NROW(data3)
+NROW(data4)
+NROW(data5)
